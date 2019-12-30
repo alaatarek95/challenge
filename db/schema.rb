@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
     t.bigint "source_id"
     t.bigint "destination_id"
     t.datetime "dep_time"
-    t.integer "seats"
+    t.integer "seats", default: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["destination_id"], name: "fk_rails_447da15f04"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
     t.string "full_name", default: "", null: false
     t.string "phone", null: false
     t.integer "role", limit: 2
+    t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

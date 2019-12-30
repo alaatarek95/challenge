@@ -6,6 +6,8 @@ class Trip < ApplicationRecord
     validates_presence_of :driver
     validates_presence_of :source
     validates_presence_of :destination
+    validates_numericality_of :seats,
+                            greater_than_or_equal_to: 3
 
     def accepted_time
       errors.add(:dep_time, "depature time can not be in the past") unless self.dep_time > DateTime.now

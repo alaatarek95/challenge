@@ -18,7 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.string :full_name , null: false, default: ""
       t.string :phone, null: false
-      t.integer :role, limit: 2
+      t.integer :role, limit: 2      
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

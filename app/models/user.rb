@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :full_name, :phone, :role, presence: true
   validates :phone, uniqueness: true
   validates :encrypted_password, presence: true, on: :create
-  enum role: { driver: 0, passenger: 1 }
+  enum role: { driver: 0, passenger: 1 , admin: 2}
 end

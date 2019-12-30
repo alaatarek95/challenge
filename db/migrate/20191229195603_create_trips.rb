@@ -5,7 +5,7 @@ class CreateTrips < ActiveRecord::Migration[6.0]
       t.bigint :source_id
       t.bigint :destination_id
       t.datetime :dep_time
-      t.integer :seats
+      t.integer :seats,:default => 3
       t.timestamps
     end
     add_foreign_key :trips, :users ,column: :driver_id
