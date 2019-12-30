@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
         end
       end
     end
-    describe "phone" do
+    describe "phone uniquness" do
       context "when phone has no value " do
         it "add a validation error" do
           subject.phone = "1234567890"
@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
         end
       end
     end
-    describe "phone uniquness" do
+    describe "phone " do
       context "when phone is aleadry exists " do
         it "add a validation error" do
           subject.phone = ""

@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  
+    before do
+        Place.create!({:name =>"Giza",:pos_lat=>"41.40338" ,:pos_long=>"2.17403" })
+      end
     describe "validation" do
         describe "name" do
             context "when  name has no value" do
@@ -38,6 +40,15 @@ RSpec.describe Place, type: :model do
                     subject.valid?
                     expect(subject.errors[:pos_long])
                 end
+            end
+        end
+        describe "name uniquness" do
+            context "when name is aleadry exists " do
+                it "add a validation error" do
+                    subject.name = "Giza"
+                    subject.valid?
+                    expect(subject.errors[:name])
+                  end
             end
         end
     end
