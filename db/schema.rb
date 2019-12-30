@@ -34,15 +34,15 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
   end
 
   create_table "trips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "deriver_id"
+    t.bigint "driver_id"
     t.bigint "source_id"
     t.bigint "destination_id"
     t.datetime "dep_time"
     t.integer "seats"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["deriver_id"], name: "fk_rails_612e2c3089"
     t.index ["destination_id"], name: "fk_rails_447da15f04"
+    t.index ["driver_id"], name: "fk_rails_e7560abc33"
     t.index ["source_id"], name: "fk_rails_2b0218947e"
   end
 
@@ -67,5 +67,5 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
   add_foreign_key "pickups", "users", column: "passenger_id"
   add_foreign_key "trips", "places", column: "destination_id"
   add_foreign_key "trips", "places", column: "source_id"
-  add_foreign_key "trips", "users", column: "deriver_id"
+  add_foreign_key "trips", "users", column: "driver_id"
 end
