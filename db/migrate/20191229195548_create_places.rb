@@ -6,5 +6,6 @@ class CreatePlaces < ActiveRecord::Migration[6.0]
       t.decimal :pos_lat
       t.timestamps
     end
+    add_index :places, [:pos_long, :pos_lat], unique: true
   end
 end

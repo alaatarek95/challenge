@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
     t.decimal "pos_lat", precision: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["pos_long", "pos_lat"], name: "index_places_on_pos_long_and_pos_lat", unique: true
   end
 
   create_table "trips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

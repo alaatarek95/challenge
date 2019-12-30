@@ -8,4 +8,7 @@ class Place < ApplicationRecord
     validates_numericality_of :pos_long,
                             greater_than_or_equal_to: -180,
                             less_than_or_equal_to: 180
+
+    validates :pos_lat, uniqueness: { scope: :pos_long }
+
 end
