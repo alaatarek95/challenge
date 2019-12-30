@@ -36,6 +36,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'shoulda', '~> 3.6'
+  gem 'shoulda-matchers'
+  gem 'pry', '~> 0.12.2'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 end
 
