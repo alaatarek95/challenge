@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 services:
   db:
     image: mysql:5.7
@@ -12,18 +12,11 @@ services:
     volumes:
       - 'my-db:/var/lib/mysql'
     container_name: mysql
-  # webpacker:
-  #   build: .
-  #   env_file:
-  #     - '.env.docker'
-  #   command: ./bin/webpack-dev-server
-  #   volumes:
-  #     - .:/webpacker-example-app
-  #   ports:
-  #     - '3035:3035'
   app:
+    container_name: registrar-web
     build: .
-    # command: bin/rails server --port 3000 --binding 0.0.0.0
+    volumes:
+      - web-app:/challenge
     ports:
       - "3001:3000"
     environment:
@@ -34,17 +27,11 @@ services:
       DB_HOST: db
       RAILS_ENV: development
       RAILS_MAX_THREADS: 5
-
-    volumes:
-        - web-app:/challenge
-        # - "./config/docker/database.yml:/challenge/config/database.yml"
-    container_name: app
-    links:
-      - db:mysql
     depends_on:
       - db
-    command:
-      - ./config/docker/startup.sh
+    links:
+      - db:mysql
+   
 
 volumes:
   db:
