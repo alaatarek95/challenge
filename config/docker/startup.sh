@@ -11,4 +11,5 @@ sh ./config/docker/prepare-db.sh
 sh ./config/docker/asset-pre-compile.sh
 
 # Start Application
-bundle exec puma -C config/puma.rb
+# bundle exec puma -C config/puma.rb
+rails s
