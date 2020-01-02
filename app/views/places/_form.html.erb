@@ -1,4 +1,4 @@
-<%= form_with(model: place, local: true) do |form| %>
+<%= form_with(model: place, local: true) do |f| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -10,8 +10,78 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-md-6">
+    <%= f.text_field :name, class: "form-control", placeholder: "name ..." %>
   </div>
+  <br>
+  <%= f.hidden_field :pos_lat, value:"30.045322", id: "place_latitude" %>
+  <%= f.hidden_field :pos_long, value:"31.231384", id: "place_longitude" %>
+  
+
+  <div class="col-md-10">
+    <div id="map" style="width:690px;height:340px;" ></div>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <div class="actions">
+      <%= f.submit class:"btn btn-success" %>
+    </div>
+  </div>
+
 <% end %>
+
+
+
+
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUapcCrkW7bNodeC4BNnVXXdoCCbmrO64&callback=initMap">
+    </script>
+
+<script>
+// Initialize and add the map
+function initMap() {
+  var lat = document.getElementById('place_latitude').value;
+    var lng = document.getElementById('place_longitude').value;
+    
+    var myCoords = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+    center: myCoords,
+    zoom: 14
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCoords,
+        animation: google.maps.Animation.DROP,
+        map: map,
+        draggable: true
+    }); 
+    function refreshMarker(){
+    var lat = document.getElementById('place_latitude').value;
+    var lng = document.getElementById('place_longitude').value;
+    var myCoords = new google.maps.LatLng(lat, lng);
+    marker.setPosition(myCoords);
+    map.setCenter(marker.getPosition());   
+}  
+// when input values change call refreshMarker
+document.getElementById('place_latitude').onchange = refreshMarker;
+document.getElementById('place_longitude').onchange = refreshMarker;
+
+// when marker is dragged update input values
+marker.addListener('drag', function() {
+    latlng = marker.getPosition();
+    newlat=(Math.round(latlng.lat()*1000000))/1000000;
+    newlng=(Math.round(latlng.lng()*1000000))/1000000;
+    document.getElementById('place_latitude').value = newlat;
+    document.getElementById('place_longitude').value = newlng;
+});
+// When drag ends, center (pan) the map on the marker position
+marker.addListener('dragend', function() {
+    map.panTo(marker.getPosition());   
+});
+}
+
+
+
+
+    </script>
+

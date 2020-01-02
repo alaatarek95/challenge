@@ -23,7 +23,7 @@ class PlacesController < ApplicationController
 
   # POST /places
   # POST /places.json
-  def create
+  def create    
     @place = Place.new(place_params)
 
     respond_to do |format|
@@ -69,6 +69,7 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.fetch(:place, {})
+     
+      params.require(:place).permit(:pos_long, :pos_lat, :name)
     end
 end

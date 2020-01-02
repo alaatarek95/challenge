@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_195617) do
+ActiveRecord::Schema.define(version: 2020_01_02_214130) do
 
   create_table "pickups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "passenger_id"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_12_29_195617) do
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.decimal "pos_long", precision: 10
-    t.decimal "pos_lat", precision: 10
+    t.decimal "pos_long", precision: 10, scale: 6
+    t.decimal "pos_lat", precision: 10, scale: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pos_long", "pos_lat"], name: "index_places_on_pos_long_and_pos_lat", unique: true

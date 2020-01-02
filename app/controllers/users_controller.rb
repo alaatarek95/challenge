@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
     def index 
-        
-        binding.pry
-
         if current_user.role == "driver" 
             redirect_to drive_path
         elsif current_user.role == "passenger"

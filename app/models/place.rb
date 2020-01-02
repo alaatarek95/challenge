@@ -9,6 +9,6 @@ class Place < ApplicationRecord
                             greater_than_or_equal_to: -180,
                             less_than_or_equal_to: 180
 
-    validates :pos_lat, uniqueness: { scope: :pos_long }
+    validates_uniqueness_of :pos_long, scope: [:pos_lat]
 
 end

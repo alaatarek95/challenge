@@ -1,4 +1,27 @@
+<%= render "users/admin_nav" %>
+
+<h1> <%=@place.name %> </h1>
+
 <p id="notice"><%= notice %></p>
 
+
+<div id="map" style="width:690px;height:340px;" ></div>
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
+
+
+<script>
+
+    let lat = <%=@place.pos_lat%> ; 
+    let lng = <%=@place.pos_long%> ; 
+    let map;
+    function initMap() {
+     var uluru = {lat: lat, lng: lng};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 14, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUapcCrkW7bNodeC4BNnVXXdoCCbmrO64&callback=initMap"async defer></script>
