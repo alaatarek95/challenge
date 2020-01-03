@@ -1,4 +1,13 @@
+<%= render "users/driver_nav" %>
+
 <p id="notice"><%= notice %></p>
+
+
+<h1>Trip detatils</h1>
+<p>time: <%=I18n.l(@trip.dep_time.to_datetime, format: :long)%></p>
+<p>destination:  <%=@trip.destination&.name%> </p>
+<p> source: <%=@trip.source&.name%> <p>
+<p>number of seats:  <%=@trip.seats%> </p>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>

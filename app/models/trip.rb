@@ -10,7 +10,11 @@ class Trip < ApplicationRecord
                             greater_than_or_equal_to: 3
 
     def accepted_time
-      errors.add(:dep_time, "depature time can not be in the past") unless self.dep_time > DateTime.now
+      if dep_time.nil?
+        errors.add(:dep_time, "depature time can not be empty")
+      else
+        errors.add(:dep_time, "depature time can not be in the past") unless self.dep_time > DateTime.now
+      end
     end
 
 end
