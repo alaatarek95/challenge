@@ -2,8 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 <h1> Pickup detatils</h1>
-<p>time: <%=I18n.l(@pickup.dep_time.to_datetime, format: :long)%></p>
-<p>destination:  <%=@pickup.destination&.name%> </p>
-<p> source: <%=@pickup.source&.name%> <p>
+time:<p id="dep_time"> <%=I18n.l(@pickup.dep_time.to_datetime, format: :long)%></p>
+destination: <p id="destination"><%=@pickup.destination&.name%> </p>
+source: <p id="source"><%=@pickup.source&.name%> <p>
 <%= link_to 'Edit', edit_pickup_path(@pickup) %> |
 <%= link_to 'Back', pickups_path %>

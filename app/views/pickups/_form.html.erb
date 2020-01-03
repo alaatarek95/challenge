@@ -1,4 +1,4 @@
-<%= form_with(model: pickup, local: true) do |f| %>
+<%= form_with(model: pickup, local: true, :html => {:id => "new_pickup"}) do |f| %>
   <% if pickup.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>

@@ -4,8 +4,30 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+admin: {
+  full_name: "admin alaa",
+  email: "admin@test.com",
+  password: "admin123456",
+  password_confirmation: "admin123456",
+  phone: "12345678901",
+  role: 2
+}
 # column: value
 #
-two: {}
-# column: value
+driver: {
+  full_name: "driver alaa",
+  email: "driver@test.com",
+  password: "driver123456",
+  password_confirmation: "driver123456",
+  phone: "12345678902",
+  role: 0
+}
+
+passenger: {
+  full_name: "passenger alaa",
+  email: "passenger@test.com",
+  password: "passenger123456",
+  password_confirmation: "passenger123456",
+  phone: "12345678903",
+  role: 1
+}
