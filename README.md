@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple pickup application using ruby on rails 
 
-Things you may want to cover:
+To run this project please make sure you have ruby 2.6.4 and rails 6 dependencies
 
-* Ruby version
+-------------------
 
-* System dependencies
+Database environment:
 
-* Configuration
+Database engin: mysql
+Database user: root
+Database password:
 
-* Database creation
+------------------
+admin credentials:
 
-* Database initialization
+admin email: "admin@project.com"
+admin password: admin123456
 
-* How to run the test suite
+------------------------
 
-* Services (job queues, cache servers, search engines, etc.)
+url : localhost:3000
 
-* Deployment instructions
+you can log in as admin and add places 
 
-* ...
+then you can sign up as a driver or a passenger 
+
+----------------------
+to run the tests: rspec
