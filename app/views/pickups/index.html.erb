@@ -3,29 +3,8 @@
 
 <h1>Pickups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th> Time </th>
-      <th> Source </th>
-      <th> Destination <th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'list', trips: @pickups %>
 
-  <tbody>
-    <% @pickups.each do |pickup| %>
-      <tr>
-        <th> <%=I18n.l(pickup.dep_time.to_datetime, format: :long)%> </th>
-        <th> <%=pickup.destination&.name%> </th>
-        <th> <%=pickup.source&.name%> <th>
-        <td><%= link_to 'Show', pickup %></td>
-        <td><%= link_to 'Edit', edit_pickup_path(pickup) %></td>
-        <td><%= link_to 'Destroy', pickup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 

@@ -1,5 +1,8 @@
 <%= render "users/driver_nav" %>
 <h1><%=current_user.full_name%></h1>
-<%= link_to 'Trips', trips_path, class: "btn btn-inverse" %>
+<h2> Add new Trip</h2>
+<%= render "trips/form", trip: @trip %>
+<%= render "trips/list", trips: @trips %>
+
  
 

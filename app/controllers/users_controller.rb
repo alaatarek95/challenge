@@ -15,10 +15,17 @@ class UsersController < ApplicationController
     end
 
     def admin_home
+        @place = Place.new
     end
     def driver_home
+        @trip = Trip.new
+        @trips = Trip.where(driver_id: current_user.id)
+
     end
     def passenger_home
+        @pickup = Pickup.new
+        @pickups = Pickup.where(passenger_id: current_user.id)
+
     end
 
 end
