@@ -4,7 +4,7 @@ class PickupsController < ApplicationController
   # GET /pickups
   # GET /pickups.json
   def index
-    @pickups = Pickup.all
+    @pickups = Pickup.where(passenger_id: current_user.id)
   end
 
   # GET /pickups/1
@@ -69,6 +69,6 @@ class PickupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pickup_params
-      params.fetch(:pickup, {})
+      params.require(:pickup).permit( :source_id, :destination_id, :dep_time ).merge(passenger_id: current_user.id)
     end
 end

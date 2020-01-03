@@ -1,4 +1,4 @@
-<%= form_with(model: pickup, local: true) do |form| %>
+<%= form_with(model: pickup, local: true) do |f| %>
   <% if pickup.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>
@@ -10,8 +10,23 @@
       </ul>
     </div>
   <% end %>
+  <div class='form-group'>
+      <label for="dep_time">time</label>
 
-  <div class="actions">
-    <%= form.submit %>
+    <%= f.datetime_field :dep_time, label: false, placeholder: "Select the date and time", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+      <label for="destination_id">destination</label>
+
+    <%= f.select(:destination_id, places_for_select, {}, { class: 'form-control' }) %>
+  </div>
+  <div class='form-group'>
+    <label for="source_id">source</label>
+
+    <%= f.select(:source_id, places_for_select, {}, { class: 'form-control' }) %>
+  </div>
+
+  <div class="actions" >
+    <%= f.submit(class:"btn btn-success") %>
   </div>
 <% end %>
